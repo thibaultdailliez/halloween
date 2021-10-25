@@ -8,11 +8,16 @@ class Tableau1 extends Phaser.Scene{
      */
     preload(){
         //bg 2 (tout au fond et très flou)
+       // this.load.image('bg2-terrain-2', 'assets/level/background-2/bg2-terrain-2.png');
+        //this.load.image('bg2-terrain-2', 'assets/level/background-2/bg2-terrain-2.png');
+        //this.load.image('bg2-terrain-2', 'assets/level/background-2/bg2-terrain-2.png');
+        this.load.image('bg2-terrain-1', 'assets/level/background-2/bg2-terrain-1.png');
         this.load.image('bg2-terrain-2', 'assets/level/background-2/bg2-terrain-2.png');
         this.load.image('bg2-tree-2', 'assets/level/background-2/bg2-tree-2.png');
 
         //bg 1 (gris légèrement flou)
         this.load.image('bg1-terrain-3', 'assets/level/background-1/bg-terrain-3.png');
+        this.load.image('bg1-terrain-1', 'assets/level/background-1/bg-terrain-1.png');
 
         //ground (premier plan noir)
         this.load.image('gMid', 'assets/level/ground/g-mid.png');
@@ -60,8 +65,12 @@ class Tableau1 extends Phaser.Scene{
          * Terrain dans bg2
          * @type {Phaser.GameObjects.Image}
          */
-        let bg2Terrain2=this.add.image(-100,100, 'bg2-terrain-2').setOrigin(0,0);
+        let bg2Terrain2=this.add.image(-280,100, 'bg2-terrain-2').setOrigin(0,0);
         this.bg2Container.add(bg2Terrain2);
+        bg2Terrain2.scale=1.2
+        let bg2Terrain1=this.add.image(700,160, 'bg2-terrain-1').setOrigin(0,0);
+        this.bg2Container.add(bg2Terrain1);
+
         /**
          * Arbre dans bg2
          * @type {Phaser.GameObjects.Image}
@@ -81,8 +90,12 @@ class Tableau1 extends Phaser.Scene{
          * Terrain
          * @type {Phaser.GameObjects.Image}
          */
-        let bg1Terrain3=this.add.image(-300,200, 'bg1-terrain-3').setOrigin(0,0);
+        let bg1Terrain3=this.add.image(-430,180, 'bg1-terrain-3').setOrigin(0,0);
         this.bg1Container.add(bg1Terrain3);
+
+        let bg1Terrain1=this.add.image(700,300, 'bg1-terrain-1').setOrigin(0,0);
+        this.bg1Container.add(bg1Terrain1);
+        bg1Terrain1.scale=0.6
 
         //-------------ground (premier plan noir)---------------------------
 
@@ -98,6 +111,7 @@ class Tableau1 extends Phaser.Scene{
         let tree1=this.add.image(300,350, 'gTree1').setOrigin(0,1);
         tree1.setTintFill(0xFF0000); // pratique pour dbugger (effet rouge)
         this.groundContainer.add(tree1);
+        tree1.scale=0.2
         /**
          * Terrain 1
          * @type {Phaser.GameObjects.Image}
@@ -109,7 +123,7 @@ class Tableau1 extends Phaser.Scene{
          * Terrain 2
          * @type {Phaser.GameObjects.Image}
          */
-        let gMid2=this.add.image(gMid1.x+gMid1.width,350, 'gMid').setOrigin(0,0); //on rajoute 1 px pour l'exemple
+        let gMid2=this.add.image(50,350, 'gMid').setOrigin(0,0); //on rajoute 1 px pour l'exemple
         this.groundContainer.add(gMid2);
         /**
          * Terrain 3
@@ -174,7 +188,7 @@ class Tableau1 extends Phaser.Scene{
         let me=this;
         this.input.keyboard.on('keydown', function(kevent)
         {
-            switch (kevent.keyCode)
+            switch (kevent.keyCode) // = if , dans le cas ou tel touche est pressé
             {
                 case Phaser.Input.Keyboard.KeyCodes.RIGHT:
                     me.speed=1;
