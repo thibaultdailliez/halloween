@@ -143,7 +143,7 @@ class Tableau1 extends Phaser.Scene{
                 {key:'filterFilm3'},
             ],
             frameRate: 16,
-            repeat: -1
+            repeat: -1 // -1 correspond a l'infini
         });
         this.filterFilm.play('film');
 
