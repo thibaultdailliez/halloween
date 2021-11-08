@@ -52,6 +52,9 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gLiane3', 'assets/level/ground/g-vine-c.png');
         // + zombies page 1
         this.load.image('gZ1', 'assets/zombies/z1.png');
+        this.load.image('gZ6', 'assets/zombies/z6.png');
+        this.load.image('gZ5', 'assets/zombies/z5.png');
+        this.load.image('gZ8', 'assets/zombies/z8.png');
 
         // page 2
         this.load.image('gFellentree1', 'assets/level/ground/g-fellen-tree-1.png');
@@ -339,11 +342,18 @@ class Tableau1 extends Phaser.Scene{
         this.groundContainer.add(vine204);
         vine204.scale=0.7
 
-        // + zombie page 1
-        let Zombie1=this.add.image(515,293, 'gZ1').setOrigin(0,0);
+        //  Zombie page 1
+
+        let Zombie1=this.add.image(600,251, 'gZ1').setOrigin(0,0);
         this.groundContainer.add(Zombie1);
-        Zombie1.scale=0.6
-        Zombie1.angle=5
+        Zombie1.scale=0.7
+        Zombie1.flipX=true
+        Zombie1.angle=-5
+
+        let Zombie8=this.add.image(535,90, 'gZ8').setOrigin(0,0);
+        this.groundContainer.add(Zombie8);
+        Zombie8.scale=0.6
+        Zombie8.angle=-5
 
         // page 2
 
@@ -386,6 +396,17 @@ class Tableau1 extends Phaser.Scene{
         let gMid1c=this.add.image(1600,510, 'gMid').setOrigin(0,0);
         this.groundContainer.add(gMid1c);
         gMid1c.scaleX=1.3
+
+        // + zombie
+        let Zombie6=this.add.image(1075,300, 'gZ6').setOrigin(0,0);
+        this.groundContainer.add(Zombie6);
+        Zombie6.scale=0.4
+        Zombie6.angle=0
+
+        let Zombie5=this.add.image(1655,220, 'gZ5').setOrigin(0,0);
+        this.groundContainer.add(Zombie5);
+        Zombie5.scale=0.7
+        Zombie5.angle=10
 
 
 
@@ -469,8 +490,8 @@ class Tableau1 extends Phaser.Scene{
         //définit à quelles vitesse se déplacent nos différents plans
         bgAnimationA.scrollFactorX=0;
         this.filterFilm.scrollFactorX=0;
-        this.bg2Container.scrollFactorX=0.2;
-        this.bg1Container.scrollFactorX=0.4;
+        this.bg2Container.scrollFactorX=1;
+        this.bg1Container.scrollFactorX=1;
         this.groundContainer.scrollFactorX=1;
     }
     /**
