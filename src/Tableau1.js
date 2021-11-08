@@ -72,8 +72,17 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('filterBloody2', 'assets/level/filters/bloody/frame2.png');
         this.load.image('filterBloody3', 'assets/level/filters/bloody/frame3.png');
 
+        /**
+
+        this.load.image('filterframe1', 'assets/level/weather/rain/frame1.png');
+        this.load.image('filterframe2', 'assets/level/weather/rain/frame2.png');
+        this.load.image('filterframe3', 'assets/level/weather/rain/frame3.png');
+         */
+
         //texture au fond  TODO élève : faire une boucle pour charger les 3 images et démontrer par la même que vous savez aller au plus simple
         this.load.image('bg-animation-a', 'assets/level/background-2/bg-animation/bg-animation-a.png');
+
+        //this.load.image('bg-animation-a', 'assets/level/background-2/bg-animation/bg-animation-a.png');
 
     }
 
@@ -461,7 +470,8 @@ class Tableau1 extends Phaser.Scene{
          * filtre type film au premier plan
          * @type {Phaser.GameObjects.Sprite}
          */
-        this.filterFilm = this.add.sprite(0, 0, 'filterFilm1').setOrigin(0,0);
+
+        this.filterFilm = this.add.sprite(0, 0, 'filterBloody1').setOrigin(0,0);
         //animation de 3 images
         this.anims.create({
             key: 'film',
@@ -473,7 +483,25 @@ class Tableau1 extends Phaser.Scene{
             frameRate: 16,
             repeat: -1 // -1 correspond a l'infini
         });
-        this.filterFilm.play('film');
+        this.filterFilm.play('weather');
+
+
+        //pas fini
+
+        /** this.filterWeather = this.add.sprite(0, 0, 'filterWeather1').setOrigin(0,0);
+        //animation de 3 images
+        this.anims.create({
+            key: 'weather',
+            frames: [
+                {key:'filterframe1'},
+                {key:'filterframe2'},
+                {key:'filterframe3'},
+            ],
+            frameRate: 16,
+            repeat: -1 // -1 correspond a l'infini
+        });
+        this.filterWeather.play('weather');
+         */
 
         //TODO élève faire une animation du même genre que filter mais pour bgAnimationA
 
