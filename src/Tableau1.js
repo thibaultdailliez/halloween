@@ -72,12 +72,20 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('filterBloody2', 'assets/level/filters/bloody/frame2.png');
         this.load.image('filterBloody3', 'assets/level/filters/bloody/frame3.png');
 
-        /**
+
 
         this.load.image('filterframe1', 'assets/level/weather/rain/frame1.png');
         this.load.image('filterframe2', 'assets/level/weather/rain/frame2.png');
         this.load.image('filterframe3', 'assets/level/weather/rain/frame3.png');
-         */
+
+        this.load.image('Snowframe1', 'assets/level/weather/snow/frame1.png');
+        this.load.image('Snowframe2', 'assets/level/weather/snow/frame2.png');
+        this.load.image('Snowframe3', 'assets/level/weather/snow/frame3.png');
+        this.load.image('Snowframe4', 'assets/level/weather/snow/frame4.png');
+        this.load.image('Snowframe5', 'assets/level/weather/snow/frame5.png');
+
+
+
 
         //texture au fond  TODO élève : faire une boucle pour charger les 3 images et démontrer par la même que vous savez aller au plus simple
         this.load.image('bg-animation-a', 'assets/level/background-2/bg-animation/bg-animation-a.png');
@@ -488,10 +496,10 @@ class Tableau1 extends Phaser.Scene{
 
         //pas fini
 
-        /** this.filterWeather = this.add.sprite(0, 0, 'filterWeather1').setOrigin(0,0);
+         this.filterRain = this.add.sprite(0, 0, 'filterRain').setOrigin(0,0);
         //animation de 3 images
         this.anims.create({
-            key: 'weather',
+            key: 'rain',
             frames: [
                 {key:'filterframe1'},
                 {key:'filterframe2'},
@@ -500,8 +508,25 @@ class Tableau1 extends Phaser.Scene{
             frameRate: 16,
             repeat: -1 // -1 correspond a l'infini
         });
-        this.filterWeather.play('weather');
-         */
+        this.filterRain.play('rain');
+
+        this.filterSnow = this.add.sprite(0, 0, 'filterSnow').setOrigin(0,0);
+        //animation de 3 images
+        this.anims.create({
+            key: 'snow',
+            frames: [
+                {key:'Snowframe1'},
+                {key:'Snowframe2'},
+                {key:'Snowframe3'},
+                {key:'Snowframe4'},
+                {key:'Snowframe5'},
+            ],
+            frameRate: 16,
+            repeat: -1 // -1 correspond a l'infini
+        });
+        this.filterSnow.play('snow');
+
+
 
         //TODO élève faire une animation du même genre que filter mais pour bgAnimationA
 
@@ -517,9 +542,11 @@ class Tableau1 extends Phaser.Scene{
         this.cameras.main.setBounds(0, 0, 2000, 540);
         //définit à quelles vitesse se déplacent nos différents plans
         bgAnimationA.scrollFactorX=0;
+        this.filterRain.scrollFactorX=0;
+        this.filterSnow.scrollFactorX=0;
         this.filterFilm.scrollFactorX=0;
-        this.bg2Container.scrollFactorX=1;
-        this.bg1Container.scrollFactorX=1;
+        this.bg2Container.scrollFactorX=0;
+        this.bg1Container.scrollFactorX=0.8;
         this.groundContainer.scrollFactorX=1;
     }
     /**
@@ -537,6 +564,23 @@ class Tableau1 extends Phaser.Scene{
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.LEFT:
                     me.speed=-1;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.S:
+                    me.filterRain.visible= false;
+                    me.filterSnow.visible= false;
+
+                    break;
+
+                case Phaser.Input.Keyboard.KeyCodes.P:
+                    me.filterRain.visible= true;
+                    me.filterSnow.visible= false;
+
+                    break;
+
+                case Phaser.Input.Keyboard.KeyCodes.N:
+                    me.filterRain.visible= false;
+                    me.filterSnow.visible= true;
+
                     break;
             }
         });
