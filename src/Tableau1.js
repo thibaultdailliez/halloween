@@ -545,6 +545,8 @@ class Tableau1 extends Phaser.Scene{
         this.filterRain.scrollFactorX=0;
         this.filterSnow.scrollFactorX=0;
         this.filterFilm.scrollFactorX=0;
+        this.filterRain.visible=false;
+        this.filterSnow.visible=false;
         this.bg2Container.scrollFactorX=0;
         this.bg1Container.scrollFactorX=0.8;
         this.groundContainer.scrollFactorX=1;
