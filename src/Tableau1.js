@@ -84,6 +84,42 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('Snowframe4', 'assets/level/weather/snow/frame4.png');
         this.load.image('Snowframe5', 'assets/level/weather/snow/frame5.png');
 
+        // BOY waiting
+        this.load.image('Idle1-1', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-1.png');
+        this.load.image('Idle1-2', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-2.png');
+        this.load.image('Idle1-3', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-3.png');
+        this.load.image('Idle1-4', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-4.png');
+        this.load.image('Idle1-5', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-5.png');
+        this.load.image('Idle1-6', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-6.png');
+        this.load.image('Idle1-7', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-7.png');
+        this.load.image('Idle1-8', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-8.png');
+        this.load.image('Idle1-9', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-9.png');
+        this.load.image('Idle1-10', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-10.png');
+
+        // BOY run
+        this.load.image('Run1-1', 'assets/Characters/boy/boy-style-1/PNG/run/run1-1.png');
+        this.load.image('Run1-2', 'assets/Characters/boy/boy-style-1/PNG/run/run1-2.png');
+        this.load.image('Run1-3', 'assets/Characters/boy/boy-style-1/PNG/run/run1-3.png');
+        this.load.image('Run1-4', 'assets/Characters/boy/boy-style-1/PNG/run/run1-4.png');
+        this.load.image('Run1-5', 'assets/Characters/boy/boy-style-1/PNG/run/run1-5.png');
+        this.load.image('Run1-6', 'assets/Characters/boy/boy-style-1/PNG/run/run1-6.png');
+        this.load.image('Run1-7', 'assets/Characters/boy/boy-style-1/PNG/run/run1-7.png');
+        this.load.image('Run1-8', 'assets/Characters/boy/boy-style-1/PNG/run/run1-8.png');
+
+        // Enemy1
+        this.load.image('Enemy1-1', 'assets/Characters/enemy1/PNG/idle/enemy1-1.png');
+        this.load.image('Enemy1-2', 'assets/Characters/enemy1/PNG/idle/enemy1-2.png');
+        this.load.image('Enemy1-3', 'assets/Characters/enemy1/PNG/idle/enemy1-3.png');
+        this.load.image('Enemy1-4', 'assets/Characters/enemy1/PNG/idle/enemy1-4.png');
+        this.load.image('Enemy1-5', 'assets/Characters/enemy1/PNG/idle/enemy1-5.png');
+        this.load.image('Enemy1-6', 'assets/Characters/enemy1/PNG/idle/enemy1-6.png');
+        this.load.image('Enemy1-7', 'assets/Characters/enemy1/PNG/idle/enemy1-7.png');
+        this.load.image('Enemy1-8', 'assets/Characters/enemy1/PNG/idle/enemy1-8.png');
+        this.load.image('Enemy1-9', 'assets/Characters/enemy1/PNG/idle/enemy1-9.png');
+        this.load.image('Enemy1-10', 'assets/Characters/enemy1/PNG/idle/enemy1-10.png');
+
+
+
 
 
 
@@ -106,6 +142,11 @@ class Tableau1 extends Phaser.Scene{
          * @type {Phaser.GameObjects.Sprite}
          */
         let bgAnimationA=this.add.sprite(0,0, 'bg-animation-a').setOrigin(0,0);
+        /**
+         * vitesse deplacement player
+         * @type {number}
+         */
+        this.speedX=0;
 
         //--------------background 2 (tout au fond et flou)--------------------
 
@@ -240,6 +281,29 @@ class Tableau1 extends Phaser.Scene{
         bg1woodenbridge.scale=1
         bg1woodenbridge.scaleY=0.8
 
+        let animationIdleEnemy = this.add.sprite(600, 160, 'animationIdleEnemy').setOrigin(0,0);
+        this.anims.create({
+            key: 'IdleEnemy',
+            frames: [
+                {key:'Enemy1-1'},
+                {key:'Enemy1-2'},
+                {key:'Enemy1-3'},
+                {key:'Enemy1-4'},
+                {key:'Enemy1-5'},
+                {key:'Enemy1-6'},
+                {key:'Enemy1-7'},
+                {key:'Enemy1-8'},
+                {key:'Enemy1-9'},
+                {key:'Enemy1-10'},
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
+        animationIdleEnemy.play('IdleEnemy');
+        animationIdleEnemy.flipX=true;
+        animationIdleEnemy.scale=0.5
+        animationIdleEnemy.angle=-10
+        this.bg1Container.add(animationIdleEnemy);
 
 
 
@@ -428,6 +492,51 @@ class Tableau1 extends Phaser.Scene{
 
 
 
+        this.player = this.add.sprite(28, 130, 'animationIdle1').setOrigin(0,0);
+        this.anims.create({
+            key: 'idle1',
+            frames: [
+                {key:'Idle1-1'},
+                {key:'Idle1-2'},
+                {key:'Idle1-3'},
+                {key:'Idle1-4'},
+                {key:'Idle1-5'},
+                {key:'Idle1-6'},
+                {key:'Idle1-7'},
+                {key:'Idle1-8'},
+                {key:'Idle1-9'},
+                {key:'Idle1-10'},
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
+        this.player.play('idle1');
+        this.player.scale=0.6
+
+
+        this.anims.create({
+            key: 'run',
+            frames: [
+                {key:'Run1-1'},
+                {key:'Run1-2'},
+                {key:'Run1-3'},
+                {key:'Run1-4'},
+                {key:'Run1-5'},
+                {key:'Run1-6'},
+                {key:'Run1-7'},
+                {key:'Run1-8'},
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
+
+
+
+
+
+
+
+
 
 
 
@@ -479,7 +588,7 @@ class Tableau1 extends Phaser.Scene{
          * @type {Phaser.GameObjects.Sprite}
          */
 
-        this.filterFilm = this.add.sprite(0, 0, 'filterBloody1').setOrigin(0,0);
+         this.filterFilm = this.add.sprite(0, 0, 'filterBloody1').setOrigin(0,0);
         //animation de 3 images
         this.anims.create({
             key: 'film',
@@ -550,6 +659,9 @@ class Tableau1 extends Phaser.Scene{
         this.bg2Container.scrollFactorX=0;
         this.bg1Container.scrollFactorX=0.8;
         this.groundContainer.scrollFactorX=1;
+
+
+
     }
     /**
      * Définit ce qui se passe quand on appuie ou relache une touche du clavier
@@ -582,8 +694,25 @@ class Tableau1 extends Phaser.Scene{
                 case Phaser.Input.Keyboard.KeyCodes.N:
                     me.filterRain.visible= false;
                     me.filterSnow.visible= true;
-
                     break;
+
+                case Phaser.Input.Keyboard.KeyCodes.D:
+                    me.speedX=1;
+                    me.player.play('run');
+                    me.player.flipX=false;
+                break;
+
+                case Phaser.Input.Keyboard.KeyCodes.Q:
+                    me.speedX=-1;
+                    me.player.play('run');
+                    me.player.flipX=true;
+                    break;
+
+
+
+
+
+
             }
         });
         this.input.keyboard.on('keyup', function(kevent)
@@ -592,8 +721,12 @@ class Tableau1 extends Phaser.Scene{
             {
                 case Phaser.Input.Keyboard.KeyCodes.RIGHT:
                 case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                    me.speed=0;
+                case Phaser.Input.Keyboard.KeyCodes.D:
+                case Phaser.Input.Keyboard.KeyCodes.Q:
+                    me.player.play('idle1');
+                    me.speedX=0;
                     break;
+
             }
         });
     }
@@ -607,6 +740,7 @@ class Tableau1 extends Phaser.Scene{
 
         //petit effet de vibrance sur le filtre film au tout premier plan
         this.filterFilm.setAlpha(Phaser.Math.Between(95,100)/100)
+        this.player.x+=this.speedX;
     }
 
 
