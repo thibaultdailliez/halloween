@@ -56,6 +56,7 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gZ5', 'assets/zombies/z5.png');
         this.load.image('gZ8', 'assets/zombies/z8.png');
 
+
         // page 2
         this.load.image('gFellentree1', 'assets/level/ground/g-fellen-tree-1.png');
         this.load.image('gStone1', 'assets/level/ground/g-stone-1.png');
@@ -69,14 +70,18 @@ class Tableau1 extends Phaser.Scene{
 
         //filtre film TODO élève : faire une boucle à la place des 3 lignes qui suivent
         for(let i=1;i<=3;i++){
-            this.load.image('filterBloody'+i, 'assets/level/filters/bloody/frame'+i+'.png');
+            this.load.image('filterBloody-'+i, 'assets/level/filters/bloody/frame'+i+'.png');
+        }
+
+        for(let i=1;i<=10;i++){
+            this.load.image('Enemy1-'+i, 'assets/Characters/enemy1/PNG/idle/enemy1-'+i+'.png');
         }
 
         for(let i=1;i<=3;i++){
-            this.load.image('filterframe'+i, 'assets/level/weather/rain/frame'+i+'.png');
+            this.load.image('Rainframe-'+i, 'assets/level/weather/rain/frame'+i+'.png');
         }
         for(let i=1;i<=5;i++){
-            this.load.image('Snowframe'+i, 'assets/level/weather/snow/frame'+i+'.png');
+            this.load.image('Snowframe-'+i, 'assets/level/weather/snow/frame'+i+'.png');
         }
         // BOY waiting
 
@@ -85,7 +90,7 @@ class Tableau1 extends Phaser.Scene{
         }
         // BOY run
         for(let i=1;i<=8;i++){
-            this.load.image('Run-'+i, 'assets/Characters/boy/boy-style-1/PNG/run/run1-'+i+'.png');
+            this.load.image('Run1-'+i, 'assets/Characters/boy/boy-style-1/PNG/run/run1-'+i+'.png');
         }
 
 
@@ -260,7 +265,7 @@ class Tableau1 extends Phaser.Scene{
         bg1woodenbridge.scale=1
         bg1woodenbridge.scaleY=0.8
 
-        let animationIdleEnemy = this.add.sprite(600, 160, 'animationIdleEnemy').setOrigin(0,0);
+        let animationIdleEnemy = this.add.sprite(600, 160).setOrigin(0,0);
         this.anims.create({
             key: 'IdleEnemy',
             frames: [
@@ -492,7 +497,6 @@ class Tableau1 extends Phaser.Scene{
         this.player.play('idle1');
         this.player.scale=0.6
 
-
         this.anims.create({
             key: 'run',
             frames: [
@@ -512,7 +516,7 @@ class Tableau1 extends Phaser.Scene{
         // trap2
 
 
-        this.trap2 = this.add.sprite(0, 0, 'trap2').setOrigin(0,0);
+        this.trap2 = this.add.sprite(505, 208, 'trap-2').setOrigin(0,0);
 
         this.anims.create({
             key: 'trap2',
@@ -527,7 +531,8 @@ class Tableau1 extends Phaser.Scene{
             repeat: -1
         });
         this.trap2.play('trap2');
-
+        this.trap2.scale=0.2;
+        this.trap2.angle=5
 
 
 
@@ -591,14 +596,14 @@ class Tableau1 extends Phaser.Scene{
         this.anims.create({
             key: 'film',
             frames: [
-                {key:'filterBloody1'},
-                {key:'filterBloody2'},
-                {key:'filterBloody3'},
+                {key:'filterBloody-1'},
+                {key:'filterBloody-2'},
+                {key:'filterBloody-3'},
             ],
             frameRate: 16,
             repeat: -1 // -1 correspond a l'infini
         });
-        this.filterFilm.play('weather');
+        this.filterFilm.play('film');
 
 
         //pas fini
@@ -608,9 +613,9 @@ class Tableau1 extends Phaser.Scene{
         this.anims.create({
             key: 'rain',
             frames: [
-                {key:'filterframe1'},
-                {key:'filterframe2'},
-                {key:'filterframe3'},
+                {key:'Rainframe-1'},
+                {key:'Rainframe-2'},
+                {key:'Rainframe-3'},
             ],
             frameRate: 16,
             repeat: -1 // -1 correspond a l'infini
@@ -622,11 +627,11 @@ class Tableau1 extends Phaser.Scene{
         this.anims.create({
             key: 'snow',
             frames: [
-                {key:'Snowframe1'},
-                {key:'Snowframe2'},
-                {key:'Snowframe3'},
-                {key:'Snowframe4'},
-                {key:'Snowframe5'},
+                {key:'Snowframe-1'},
+                {key:'Snowframe-2'},
+                {key:'Snowframe-3'},
+                {key:'Snowframe-4'},
+                {key:'Snowframe-5'},
             ],
             frameRate: 16,
             repeat: -1 // -1 correspond a l'infini
