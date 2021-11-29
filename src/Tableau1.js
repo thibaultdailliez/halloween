@@ -68,55 +68,34 @@ class Tableau1 extends Phaser.Scene{
         }
 
         //filtre film TODO élève : faire une boucle à la place des 3 lignes qui suivent
-        this.load.image('filterBloody1', 'assets/level/filters/bloody/frame1.png');
-        this.load.image('filterBloody2', 'assets/level/filters/bloody/frame2.png');
-        this.load.image('filterBloody3', 'assets/level/filters/bloody/frame3.png');
+        for(let i=1;i<=3;i++){
+            this.load.image('filterBloody'+i, 'assets/level/filters/bloody/frame'+i+'.png');
+        }
 
-
-
-        this.load.image('filterframe1', 'assets/level/weather/rain/frame1.png');
-        this.load.image('filterframe2', 'assets/level/weather/rain/frame2.png');
-        this.load.image('filterframe3', 'assets/level/weather/rain/frame3.png');
-
-        this.load.image('Snowframe1', 'assets/level/weather/snow/frame1.png');
-        this.load.image('Snowframe2', 'assets/level/weather/snow/frame2.png');
-        this.load.image('Snowframe3', 'assets/level/weather/snow/frame3.png');
-        this.load.image('Snowframe4', 'assets/level/weather/snow/frame4.png');
-        this.load.image('Snowframe5', 'assets/level/weather/snow/frame5.png');
-
+        for(let i=1;i<=3;i++){
+            this.load.image('filterframe'+i, 'assets/level/weather/rain/frame'+i+'.png');
+        }
+        for(let i=1;i<=5;i++){
+            this.load.image('Snowframe'+i, 'assets/level/weather/snow/frame'+i+'.png');
+        }
         // BOY waiting
-        this.load.image('Idle1-1', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-1.png');
-        this.load.image('Idle1-2', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-2.png');
-        this.load.image('Idle1-3', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-3.png');
-        this.load.image('Idle1-4', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-4.png');
-        this.load.image('Idle1-5', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-5.png');
-        this.load.image('Idle1-6', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-6.png');
-        this.load.image('Idle1-7', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-7.png');
-        this.load.image('Idle1-8', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-8.png');
-        this.load.image('Idle1-9', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-9.png');
-        this.load.image('Idle1-10', 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-10.png');
 
+        for(let i=1;i<=10;i++){
+            this.load.image('Idle1-'+i, 'assets/Characters/boy/boy-style-1/PNG/idle/idle1-'+i+'.png');
+        }
         // BOY run
-        this.load.image('Run1-1', 'assets/Characters/boy/boy-style-1/PNG/run/run1-1.png');
-        this.load.image('Run1-2', 'assets/Characters/boy/boy-style-1/PNG/run/run1-2.png');
-        this.load.image('Run1-3', 'assets/Characters/boy/boy-style-1/PNG/run/run1-3.png');
-        this.load.image('Run1-4', 'assets/Characters/boy/boy-style-1/PNG/run/run1-4.png');
-        this.load.image('Run1-5', 'assets/Characters/boy/boy-style-1/PNG/run/run1-5.png');
-        this.load.image('Run1-6', 'assets/Characters/boy/boy-style-1/PNG/run/run1-6.png');
-        this.load.image('Run1-7', 'assets/Characters/boy/boy-style-1/PNG/run/run1-7.png');
-        this.load.image('Run1-8', 'assets/Characters/boy/boy-style-1/PNG/run/run1-8.png');
+        for(let i=1;i<=8;i++){
+            this.load.image('Run-'+i, 'assets/Characters/boy/boy-style-1/PNG/run/run1-'+i+'.png');
+        }
 
-        // Enemy1
-        this.load.image('Enemy1-1', 'assets/Characters/enemy1/PNG/idle/enemy1-1.png');
-        this.load.image('Enemy1-2', 'assets/Characters/enemy1/PNG/idle/enemy1-2.png');
-        this.load.image('Enemy1-3', 'assets/Characters/enemy1/PNG/idle/enemy1-3.png');
-        this.load.image('Enemy1-4', 'assets/Characters/enemy1/PNG/idle/enemy1-4.png');
-        this.load.image('Enemy1-5', 'assets/Characters/enemy1/PNG/idle/enemy1-5.png');
-        this.load.image('Enemy1-6', 'assets/Characters/enemy1/PNG/idle/enemy1-6.png');
-        this.load.image('Enemy1-7', 'assets/Characters/enemy1/PNG/idle/enemy1-7.png');
-        this.load.image('Enemy1-8', 'assets/Characters/enemy1/PNG/idle/enemy1-8.png');
-        this.load.image('Enemy1-9', 'assets/Characters/enemy1/PNG/idle/enemy1-9.png');
-        this.load.image('Enemy1-10', 'assets/Characters/enemy1/PNG/idle/enemy1-10.png');
+
+        // Trap2
+        for(let i=1;i<=5;i++){
+            this.load.image('Trap2-'+i, 'assets/Characters/trap2/PNG/open/trap2-'+i+'.png');
+        }
+
+
+
 
 
 
@@ -529,6 +508,25 @@ class Tableau1 extends Phaser.Scene{
             frameRate: 16,
             repeat: -1
         });
+
+        // trap2
+
+
+        this.trap2 = this.add.sprite(0, 0, 'trap2').setOrigin(0,0);
+
+        this.anims.create({
+            key: 'trap2',
+            frames: [
+                {key:'Trap2-1'},
+                {key:'Trap2-2'},
+                {key:'Trap2-3'},
+                {key:'Trap2-4'},
+                {key:'Trap2-5'},
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
+        this.trap2.play('trap2');
 
 
 
